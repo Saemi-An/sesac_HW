@@ -1,0 +1,154 @@
+/* 바디 및 캔버스 */
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Permanent Marker'
+}
+#canvas_itself {
+    border: 3px solid black;
+    width: 700px;
+    height: 700px;
+}
+
+/* 네비게이션 */
+#navigation_area {
+    width: 700px;
+    height: 40px;
+}
+#last_month {
+    float: left;
+    width: 340px;
+    height: 25px;
+    margin-top: 10px;
+    margin-left: 5px;
+    color: black;
+}
+
+#next_month {
+    float: right;
+    text-align: right;
+    width: 340px;
+    height: 25px;
+    margin-top: 10px;
+    margin-right: 5px;
+    color: black;
+}
+.atag {
+    color: black;
+    text-decoration-line: none;
+}
+
+/* 애니메이션 */
+#last_span:hover {
+    position: relative;
+    animation-name: last_span_hover;
+    animation-duration: 0.5s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+@keyframes last_span_hover{
+    0% {left:0px}
+    100% {left:10px}
+}
+
+#next_span:hover {
+    position: relative;
+    animation-name: next_span_hover;
+    animation-duration: 0.5s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+@keyframes next_span_hover{
+    0% {right:0px}
+    100% {right:10px}
+}
+
+/* 이미지 사진 */
+#image_area {
+    width: 700px;
+    height: 305px;
+    padding-top: 5px;
+}
+#img {
+    width: 630px;
+    height: 300px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+/* 연도 및 달력 div 영역잡기 */
+#information_area {
+    float: left;
+    width: 200px;
+    height: 365px;
+}
+#table_area {
+    float: right;
+    width: 500px;
+    height: 365px;
+}
+
+/* 연도와 월  */
+#two-spans {
+    height: 150px;
+    padding-top: 15px;
+    margin-left: 35px;
+}
+#year {
+    font-size: 20px;
+}
+#month {
+    font-size: 50px;
+}
+
+
+
+/* 달력 꾸미기 */
+table {
+    width: 430px;
+    height: 300px;
+    margin-top: 15px;
+    margin-left: 35px;
+    margin-right: 35px;
+
+    border-collapse: collapse;
+}
+.lnd {
+    border-right: 2px solid black;
+}
+tr, th, td{
+    border-bottom: 2px solid black;
+}
+th, td {
+    width: 30px;
+    text-align: center;
+}
+th:nth-child(8), td:nth-child(8){
+    color: rgb(203, 21, 21);
+
+}
+
+/* transition effect */
+/* 날짜 위에 마우스 호버시 폰트 사이즈 키우기 */
+td {
+    font-size: 16px;
+    font-weight: lighter;
+    transition-property: font-size;
+    transition-duration: 0.5s;
+}
+td:hover {
+    font-size: 25px;
+}
+/* 날짜 위에 마우스 호버시 해당 위크에 하이라이트 주기 */
+/* 
+부모요소(tr)에 마우스 호버시
+해당 부모요소 하위에 특정 요소(td)에 대해
+
+같은 부모 요소 내에서 다른 특정 요소(th)의 스타일을 바꾼다
+*/
+tr:hover:has(td) th{
+    font-size: 20px;
+    color: rgb(74, 74, 208);
+}
