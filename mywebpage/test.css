@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: aquamarine;
+}
+nav{
+    background-color: blueviolet;
+}
+section {
+    background-color: cadetblue;
+}
+article {
+    background-color: cornflowerblue;
+}
+footer {
+    background-color: darkgrey;
+}
+#floating_chatbot {
+    width: 80px;
+    height: 80px;
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    border-radius: 100%;
+    background-color: coral;
+}
+
+    /* 
+    background-image: url(class_images/panda.jpeg);
+    background-size: 100% 100%;
+    position / float / display / flex
+     */
+
+
+#flex_container { 
+    background-color: bisque;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.flex_item {
+    background-color: rgb(141, 154, 219);
+    width: 100px;
+    height: 100px;
+    margin: 10px; 
+}
