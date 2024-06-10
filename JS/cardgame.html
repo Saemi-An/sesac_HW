@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Game</title>
+    <style>
+        .container {
+            background-color: beige;
+            display: flex;
+            /* justify-content: space-around;
+            align-items: center; */
+            flex-wrap: wrap;
+    
+            width: 300px;
+            height: 270px;
+
+            margin: 0 auto ;
+            margin-top: 100px;
+        }
+        .cards {
+            background-color: cadetblue;
+            width: 70px;
+            height: 100px;
+            margin: 15px;
+        }
+        p {
+            text-align: center;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cards"></div>
+        <div class="cards"></div>
+        <div class="cards"></div>
+        <div class="cards"></div>
+        <div class="cards"></div>
+        <div class="cards"></div>
+    </div>
+    
+    <button onclick="shuffleCards()">Start!</button>
+    
+    <script>
+        // 배열 랜덤섞기 알고리즘
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // cards 갯수만큼 배열 가져오기
+        function getArray() {
+            let cardsAll = document.getElementsByClassName("cards");
+            let sampleArray = [];
+            for (i=0; i<cardsAll.length; i++) {
+                sampleArray.push(`num${i}`)
+            };
+            return sampleArray
+            // ['num0', 'num1', 'num2', 'num3', 'num4', 'num5']
+        };
+
+        // cards 갯수만큼 생성된 배열 랜덤으로 섞기
+        function getRandomArray() {
+            return shuffleArray(getArray());
+            // ['num3', 'num1', 'num0', 'num4', 'num2', 'num5']
+        }
+
+        // cards div들 하위에 p태그 생성 > 랜덤 id 및 innertext 부여
+        function shuffleCards(){
+            let randomArray = getRandomArray();
+
+            let cardsAll = document.getElementsByClassName("cards");
+
+            for (i=0; i<cardsAll.length; i++) {
+                let creP = document.createElement("p");
+
+                let randomId = randomArray[i];
+                let randomInnerText = randomArray[i].slice(-1);
+
+                creP.id = `${randomId}` 
+                creP.innerText = `${randomInnerText}`;
+                
+                cardsAll[i].appendChild(creP);
+
+            };
+        };
+    </script>
+</body>
+</html>

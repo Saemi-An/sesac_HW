@@ -11,7 +11,7 @@ class User:
         return uuid_v4
 
     def create_user_name(self):
-        with open('/Users/jjaemjjaemi/Desktop/src/HW/create_data/generators/User/user_name.txt', 'r') as f:
+        with open('./generators/User/user_name.txt', 'r') as f:   # 상대경로 : ./
             lines = f.readlines()
             name_lst = []
             name = ''
@@ -22,7 +22,7 @@ class User:
             for i in name_lst:
                 name += i
                 
-            return name
+            return print(name)
 
     def create_user_gender(self):
         gender_lst = ['남', '여']
@@ -35,7 +35,7 @@ class User:
         month = str(random.randint(1, 12)).zfill(2)   
         day = str(random.randint(1, 28)).zfill(2)   # 개선점: 1960 ~ 2023년 사이의 날짜를 고려해서 몇까지 할 수 있는지??
 
-        # 나이 계산
+        # 나이 계산 >> 4자리 빼기로 단축
         if 0 <= int(year[-2:]) <= 23:
             age = 24 - int(year[-2:])
         elif int(year[-2:]) >23:
@@ -116,7 +116,10 @@ class User:
         else:
             print('Type Error: Please try again.')
 
-saemi_u = User()
+
+if __name__ == '__main__':
+    saemi_u = User()
+    saemi_u.create_user_name()
 
 
 

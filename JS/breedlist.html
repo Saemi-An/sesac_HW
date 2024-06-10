@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="fetchData()" style="background-color: blueviolet;">Fetch</button>
+        <br>
+        <h3>Choose a breed: </h3>
+        <select id="dropdownBox">
+            <option value="please-select">Select</option>
+        </select>
+        <button onclick="showImage()">Show Image</button>
+        <br>
+        <div id="resultDiv">
+            <img src="" alt="Please Choose Any Breed!" id="imgTag">
+        </div>
+    </div>
+
+    <script>
+        function fetchData(){
+            // 개 종류들 api에서 json형식으로 fetch
+            fetch("https://dog.ceo/api/breeds/list")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error");
+                }
+                return response.json();
+            })
+            // json으로 불러온 data 가공
+            .then(function(data){
+                // 드롭다운 옵션으로 breedList 집어넣기
+                let breedList = data.message;
+                let dropdownBox = document.getElementById("dropdownBox");
+
+                for (i=0; i<breedList.length; i++) {
+                    let creOption = document.createElement("option");
+                    creOption.value = `breed${i}`;
+                    creOption.innerText = `${breedList[i]}`;
+
+                    dropdownBox.appendChild(creOption);
+                }
+            })
+            // .catch(function(error){
+            //     console.log("Error...");
+            // })
+        };
+
+        document.getElementById("dropdownBox").addEventListener("change", function(){
+            // 드롭다운에서 선택된 종 이름 가져오기
+            let selectedBreed = document.getElementById("dropdownBox").value; // bread0
+
+            let optionTags = document.getElementsByTagName("option");
+
+            for (i=0; i<optionTags.length; i++) {
+                if (optionTags[i].value == selectedBreed) {
+                    selectedBreedName = optionTags[i].innerText
+                };
+            };
+        });
+
+        function randomInt(min, max){ 
+            var randomNum = Math.floor(Math.random()*(max-min+1)) + min; 
+            return randomNum;
+        }
+
+        function showImage(){
+            let imgURL = `https://dog.ceo/api/breed/${selectedBreedName}/images`;
+
+            fetch(imgURL)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error");
+                }
+                return response.json();
+            })
+            .then(function(data){
+                let imgUrlData = data.message;
+                let randomIndex = randomInt(1, imgUrlData.length);
+                let finalImg = imgUrlData[randomIndex];
+
+                // div에 이미지 추가
+                let resultDiv = document.getElementById("imgTag");
+                resultDiv.src = finalImg;
+            })
+        };
+
+        // 1. Fetch 버튼 없애고 애초부터 Breed 드롭다운 완성
+        // 2. 기본 이미지 삽입
+        // 3. 중간에 옵션값 변경하고 Show Image 버튼 클릭하면 에러 발생
+    </script>
+</body>
+</html>

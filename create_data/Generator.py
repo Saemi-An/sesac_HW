@@ -3,17 +3,17 @@
 # 2 메인함수 : 메인함수 쓰는법?
 # 1, 2번을 하지 않고 그냥 임포트 해오면 왜 임포트해온 애들이 먼저 실행되는지?
 
-import sys, os
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-
 from generators.User.User import saemi_u
 from generators.Store.Store import saemi_s
 from generators.Item.Item import saemi_i
 from generators.Order.Order import saemi_o
 from generators.OrderItem.OrderItem import saemi_oi
+# 
+# import sys, os
+# sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 
-def temp():
+def main():
     x = int(input(
         'Which data do you want to generate?\n'
         '1 User\n'
@@ -36,4 +36,5 @@ def temp():
     else:
         print('Error. Please try again.')
 
-temp()
+if __name__ == '__main__':
+    main()

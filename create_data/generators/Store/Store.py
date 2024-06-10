@@ -3,12 +3,12 @@
 # 다른 경로에 있는 모듈 불러오기 - sys 절대경로 지정   ???
 # 상속받은 함수 사용을 위해 from User(폴더명).User(파일명) import User(클래스명)   ???
 
-import sys, os
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-
-from User.User import User
 import random
 import csv
+from User.User import User
+
+import sys, os
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 class Store(User):
     # def create_uuid(self):

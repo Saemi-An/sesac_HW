@@ -10,7 +10,7 @@ import csv
 class OrderItem(User):
     # def create_uuid(self):
 
-    def get_order_uuid(self):
+    def get_order_uuid(self):   # move to Order
         header = ['order_uuid', 'order_at', 'store_uuid', 'user_uuid']
         with open('/Users/jjaemjjaemi/Desktop/src/HW/create_data/order.csv', 'r') as f:
             rd = csv.reader(f)
@@ -25,7 +25,7 @@ class OrderItem(User):
         
         return random_order_uuid
 
-    def get_item_uuid(self):
+    def get_item_uuid(self):   # move to Item
         header = ['item_uuid', 'item_type', 'item_name', 'item_price']
         with open('/Users/jjaemjjaemi/Desktop/src/HW/create_data/item.csv', 'r') as f:
             rd = csv.reader(f)

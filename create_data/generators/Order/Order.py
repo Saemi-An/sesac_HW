@@ -16,7 +16,7 @@ class Order(User):
         
         return now
     
-    def get_user_uuid(self):
+    def get_user_uuid(self):   # move to User file
 
         header = ['user_uuid', 'user_name', 'user_gender', 'user_age','user_birthdate', 'user_address']
         with open('/Users/jjaemjjaemi/Desktop/src/HW/create_data/user.csv', 'r') as f:
@@ -33,7 +33,7 @@ class Order(User):
 
         return random_user_uuid
     
-    def get_store_uuid(self):
+    def get_store_uuid(self):   # move to Store file
         header = ['store_uuid', 'store_type', 'store_name', 'store_address']
         with open('/Users/jjaemjjaemi/Desktop/src/HW/create_data/store.csv', 'r') as f:
             rd = csv.reader(f)

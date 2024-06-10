@@ -1,8 +1,9 @@
 # (Monitor)
+# csv에 저장해서 중복 피할 수 있도록
 
+import time
 # S10   S1
 # S9    S2
-# S8    S3
 # S7    S4
 # S6    S5   (Door)
 
@@ -20,6 +21,7 @@ for i in range(1, 11):
     sit_num.remove(y)
     
     W_2 = {x:y}
+    time.sleep(1)
     print(W_2)
 
 
